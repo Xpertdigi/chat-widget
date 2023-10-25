@@ -1,39 +1,36 @@
-// Create a chat container
+// Create a chat button
+const chatButton = document.createElement('div');
+chatButton.id = 'chat-button';
+chatButton.textContent = 'Chat';
+chatButton.style.position = 'fixed';
+chatButton.style.bottom = '20px';
+chatButton.style.right = '20px';
+chatButton.style.backgroundColor = '#007bff';
+chatButton.style.color = 'white';
+chatButton.style.padding = '10px 20px';
+chatButton.style.border = 'none';
+chatButton.style.borderRadius = '5px';
+chatButton.style.cursor = 'pointer';
+chatButton.style.zIndex = '1000';
+
+document.body.appendChild(chatButton);
+
+// Create the chat container
 const chatContainer = document.createElement('div');
 chatContainer.id = 'chat-container';
 chatContainer.style.position = 'fixed';
-chatContainer.style.bottom = '20px';
+chatContainer.style.bottom = '80px';
 chatContainer.style.right = '20px';
-chatContainer.style.backgroundColor = '#007bff';
-chatContainer.style.color = 'white';
-chatContainer.style.padding = '10px 20px';
+chatContainer.style.backgroundColor = 'white';
+chatContainer.style.border = '1px solid #ccc';
 chatContainer.style.borderRadius = '5px';
-chatContainer.style.cursor = 'pointer';
-chatContainer.style.zIndex = '1000';
+chatContainer.style.zIndex = '999';
 chatContainer.style.display = 'none';
-
-// Create the chat button
-const chatButton = document.createElement('div');
-chatButton.id = 'chat-button';
-chatButton.classList.add('widget-button');
-chatButton.textContent = 'Chat';
-
-chatContainer.appendChild(chatButton);
-document.body.appendChild(chatContainer);
 
 // Create the chat form
 const chatForm = document.createElement('div');
 chatForm.id = 'chat-form';
-chatForm.style.display = 'none';
-chatForm.style.position = 'fixed';
-chatForm.style.bottom = '80px';
-chatForm.style.right = '20px';
-chatForm.style.backgroundColor = 'white';
-chatForm.style.border = '1px solid #ccc';
-chatForm.style.borderRadius = '5px';
-chatForm.style.zIndex = '1000';
 chatForm.style.padding = '20px';
-chatForm.style.width = '300px';
 
 // Create input fields
 const nameInput = createInput('text', 'Name', true);
@@ -57,11 +54,12 @@ chatForm.appendChild(emailInput);
 chatForm.appendChild(phoneInput);
 chatForm.appendChild(submitButton);
 
-document.body.appendChild(chatForm);
+chatContainer.appendChild(chatForm);
+document.body.appendChild(chatContainer);
 
 // Toggle the chat form on chat button click
 chatButton.addEventListener('click', () => {
-    chatForm.style.display = chatForm.style.display === 'none' ? 'block' : 'none';
+    chatContainer.style.display = chatContainer.style.display === 'none' ? 'block' : 'none';
 });
 
 // Function to create input fields
