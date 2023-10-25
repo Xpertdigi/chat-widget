@@ -1,27 +1,39 @@
-// Create a chat button
+// Create a chat container
+const chatContainer = document.createElement('div');
+chatContainer.id = 'chat-container';
+chatContainer.style.position = 'fixed';
+chatContainer.style.bottom = '20px';
+chatContainer.style.right = '20px';
+chatContainer.style.backgroundColor = '#007bff';
+chatContainer.style.color = 'white';
+chatContainer.style.padding = '10px 20px';
+chatContainer.style.borderRadius = '5px';
+chatContainer.style.cursor = 'pointer';
+chatContainer.style.zIndex = '1000';
+chatContainer.style.display = 'none';
+
+// Create the chat button
 const chatButton = document.createElement('div');
 chatButton.id = 'chat-button';
 chatButton.classList.add('widget-button');
 chatButton.textContent = 'Chat';
 
-// Style the chat button
-chatButton.style.position = 'fixed';
-chatButton.style.bottom = '20px';
-chatButton.style.right = '20px';
-chatButton.style.backgroundColor = '#007bff';
-chatButton.style.color = 'white';
-chatButton.style.padding = '10px 20px';
-chatButton.style.border = 'none';
-chatButton.style.borderRadius = '5px';
-chatButton.style.cursor = 'pointer';
-
-document.body.appendChild(chatButton);
+chatContainer.appendChild(chatButton);
+document.body.appendChild(chatContainer);
 
 // Create the chat form
 const chatForm = document.createElement('div');
 chatForm.id = 'chat-form';
-chatForm.classList.add('widget-form');
 chatForm.style.display = 'none';
+chatForm.style.position = 'fixed';
+chatForm.style.bottom = '80px';
+chatForm.style.right = '20px';
+chatForm.style.backgroundColor = 'white';
+chatForm.style.border = '1px solid #ccc';
+chatForm.style.borderRadius = '5px';
+chatForm.style.zIndex = '1000';
+chatForm.style.padding = '20px';
+chatForm.style.width = '300px';
 
 // Create input fields
 const nameInput = createInput('text', 'Name', true);
@@ -33,15 +45,12 @@ const submitButton = document.createElement('button');
 submitButton.id = 'submit';
 submitButton.textContent = 'Submit';
 submitButton.disabled = true;
-
-// Style the chat form
-chatForm.style.position = 'fixed';
-chatForm.style.bottom = '50px';
-chatForm.style.right = '20px';
-chatForm.style.backgroundColor = '#fff';
-chatForm.style.padding = '10px';
-chatForm.style.border = '1px solid #ccc';
-chatForm.style.borderRadius = '5px';
+submitButton.style.backgroundColor = '#007bff';
+submitButton.style.color = 'white';
+submitButton.style.padding = '10px 20px';
+submitButton.style.border = 'none';
+submitButton.style.borderRadius = '5px';
+submitButton.style.cursor = 'pointer';
 
 chatForm.appendChild(nameInput);
 chatForm.appendChild(emailInput);
@@ -64,6 +73,11 @@ function createInput(type, placeholder, required) {
         input.required = true;
     }
     input.addEventListener('input', toggleSubmitButton);
+    input.style.marginBottom = '10px';
+    input.style.width = '100%';
+    input.style.padding = '10px';
+    input.style.border = '1px solid #ccc';
+    input.style.borderRadius = '5px';
     return input;
 }
 
